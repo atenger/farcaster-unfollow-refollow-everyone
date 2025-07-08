@@ -1,0 +1,6 @@
+# Farcaster Follow Manager Environment Variables
+# Copy this file to .env and fill in your actual values
+
+# Get these from https://neynar.com/
+NEYNAR_API_KEY=your_api_key_here
+NEYNAR_SIGNER_UUID=your_signer_uuid_here 
