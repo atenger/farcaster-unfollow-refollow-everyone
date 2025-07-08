@@ -1,9 +1,11 @@
-# Farcaster Follow Manager
+# Farcaster Unfollow and Refollow Everyone Scripts
 
 A command-line tool to manage your Farcaster follows. This project provides two main scripts:
 
 1. **unfollow_all.py** - Unfollows all your Farcaster follows and logs them to a CSV file
 2. **refollow_all.py** - Refollows users from the CSV file created by the unfollow script
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Setup
 
@@ -62,7 +64,7 @@ This will:
 - Fetch all users you're currently following
 - Loop through all users, or the number of users in LIMIT
 - Unfollow each user
-- Log each unfollowed user to `unfollowed_users_FID_DATE.csv`
+- Log each unfollowed user to `data/unfollowed_users_FID_DATE.csv`
 
 ### Refollow Users
 
@@ -85,7 +87,7 @@ python refollow_all.py --csv-file data/my_users.csv
 
 This will:
 
-- Read the `unfollowed_users.csv` file
+- Automatically find the most recent CSV file in the `data/` directory
 - Refollow each user listed in the file
 
 ## Files
@@ -95,7 +97,7 @@ This will:
 - `farcaster_api.py` - API utilities for Farcaster operations
 - `test_connection.py` - Test script to verify API credentials
 - `env_template.txt` - Template for environment variables
-- `unfollowed_users.csv` - Generated CSV file with unfollowed users (created after running unfollow script)
+- `data/` - Directory containing CSV files and logs (auto-created)
 
 ## Safety Features
 
@@ -103,14 +105,16 @@ This will:
 - Dry-run mode available to test without making actual changes
 - Rate limiting to avoid API limits
 - Error handling and logging
+- Graceful handling of already-following/not-following scenarios
+- Immediate CSV saving (crash-safe)
 
 ## Notes
 
 - The scripts use the Neynar API to interact with Farcaster
 - Make sure you have the necessary API permissions
 - Consider using dry-run mode first to test the functionality
-- Script results are logged into a text file
+- All logs and CSV files are saved in the `data/` directory with timestamps
 
-# TO DO
+## License
 
-- For refollow, make sure it doesnt break if user is already following someone (in case of manual follows)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
